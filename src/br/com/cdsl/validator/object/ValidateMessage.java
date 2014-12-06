@@ -4,6 +4,14 @@ public class ValidateMessage implements Message {
 
 	private boolean validate;
 	private String message;
+	
+	
+
+	public ValidateMessage(boolean validate, String message) {
+		super();
+		this.validate = validate;
+		this.message = message;
+	}
 
 	@Override
 	public boolean isValidate() {

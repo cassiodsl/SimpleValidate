@@ -1,4 +1,4 @@
-package br.com.teste;
+package br.com.cdsl.validator.object;
 
 public class CampoVazioException extends Exception {
 
@@ -9,6 +9,10 @@ public class CampoVazioException extends Exception {
 	
 	public CampoVazioException(String message){
 		super(message);
+	}
+	
+	public CampoVazioException(){
+		
 	}
 
 }

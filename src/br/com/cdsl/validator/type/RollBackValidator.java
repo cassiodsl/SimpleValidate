@@ -5,9 +5,9 @@ import java.util.List;
 import br.com.cdsl.validator.object.AbstractValidator;
 import br.com.cdsl.validator.object.Message;
 
-public class TriggerValidator  extends AbstractValidator {
+public class RollBackValidator  extends AbstractValidator{
 
-	public TriggerValidator(Object o, Class<? extends Exception> exception,
+	public RollBackValidator(Object o, Class<? extends Exception> exception,
 			String messageException) {
 		super(o, exception, messageException);
 	}
@@ -19,6 +19,5 @@ public class TriggerValidator  extends AbstractValidator {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	//TODO: Dispara uma classe apontada no atributo
 
 }
