@@ -1,4 +1,4 @@
-package br.com.cdsl.validator.object;
+package br.com.cdsl.annotations.exception;
 
 public class NonException extends Exception {
 

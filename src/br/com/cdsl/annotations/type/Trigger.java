@@ -5,7 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import br.com.cdsl.validator.type.AbstractTrigger;
+import br.com.cdsl.validator.validate.AbstractTrigger;
+
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

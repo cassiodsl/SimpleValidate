@@ -1,6 +1,6 @@
-package br.com.cdsl.validator.object;
+package br.com.cdsl.validator.validate;
 
-public class MethodNotFoundException extends Exception {
+class MethodNotFoundException extends Exception {
 
 	/**
 	 * 

@@ -4,7 +4,7 @@ import br.com.cdsl.annotations.field.NotNull;
 
 
 @NotNull(messageException = "Campo obrigatorio não preenchido")
-public class PessoaSemException {
+class PessoaSemException {
 
 	private String nome;
 	

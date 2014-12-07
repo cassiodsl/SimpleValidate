@@ -1,4 +1,4 @@
-package br.com.cdsl.validator.object;
+package br.com.cdsl.validator.validate;
 
 public interface Message {
 	

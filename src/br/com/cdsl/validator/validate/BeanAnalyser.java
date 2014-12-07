@@ -1,8 +1,8 @@
-package br.com.cdsl.validator.object;
+package br.com.cdsl.validator.validate;
 
 import java.util.List;
 
-public interface BeanAnalyser {
+interface BeanAnalyser {
 
 	public List<Message> validate() throws Exception;
 }

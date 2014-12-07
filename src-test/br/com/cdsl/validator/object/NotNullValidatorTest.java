@@ -6,9 +6,10 @@ import java.util.List;
 
 import org.junit.Test;
 
+import br.com.cdsl.validator.validate.Message;
 import br.com.cdsl.validator.validate.Validator;
 
-public class NotNullValidatorTest{
+class NotNullValidatorTest{
 
 	@Test
 	public void notNullDeveAcionarException(){

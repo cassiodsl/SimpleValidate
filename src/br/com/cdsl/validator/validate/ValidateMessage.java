@@ -1,6 +1,6 @@
-package br.com.cdsl.validator.object;
+package br.com.cdsl.validator.validate;
 
-public class ValidateMessage implements Message {
+class ValidateMessage implements Message {
 
 	private boolean validate;
 	private String message;

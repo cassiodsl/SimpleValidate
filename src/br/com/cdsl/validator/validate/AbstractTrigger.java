@@ -1,4 +1,4 @@
-package br.com.cdsl.validator.type;
+package br.com.cdsl.validator.validate;
 
 public abstract class AbstractTrigger {
 

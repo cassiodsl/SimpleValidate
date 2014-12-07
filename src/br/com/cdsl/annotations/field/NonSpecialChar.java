@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import br.com.cdsl.validator.object.NonException;
+import br.com.cdsl.annotations.exception.NonException;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
@@ -15,7 +15,7 @@ public @interface NonSpecialChar {
 	 * Remove todos os caracteres especiais exceto esses
 	 * 
 	 */
-	char[] except();
+	String except() default "";
 	/**
 	 * 
 	 * exception Exception

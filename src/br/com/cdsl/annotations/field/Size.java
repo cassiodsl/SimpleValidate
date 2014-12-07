@@ -5,6 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import br.com.cdsl.annotations.exception.NonException;
+
 /**
  */
 @Retention(RetentionPolicy.RUNTIME)
@@ -16,6 +18,6 @@ public @interface Size {
  */
 	int min() default 0;
 	int max() default 0;
-	Class<? extends Exception> exception() default java.lang.Exception.class;
+	Class<? extends Exception> exception() default NonException.class;
 	String messageException() default "";
 }
