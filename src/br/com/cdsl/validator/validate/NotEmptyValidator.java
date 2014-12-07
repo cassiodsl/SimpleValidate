@@ -8,7 +8,11 @@ import java.util.Collection;
 import java.util.List;
 
 import br.com.cdsl.annotations.exception.NonException;
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 class NotEmptyValidator extends AbstractValidator {
 
 	public NotEmptyValidator(Class<?> clazz, Annotation annotation,

@@ -4,7 +4,11 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 public class Validator {
 
 	public static List<Message> validar(Object obj) throws Exception {

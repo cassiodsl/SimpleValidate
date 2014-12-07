@@ -7,7 +7,11 @@ import java.lang.annotation.Target;
 
 import br.com.cdsl.validator.validate.AbstractTrigger;
 
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Trigger{

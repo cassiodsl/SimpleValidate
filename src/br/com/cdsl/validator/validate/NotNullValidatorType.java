@@ -7,7 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cdsl.annotations.exception.NonException;
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 class NotNullValidatorType extends AbstractValidator {
 
 	public NotNullValidatorType(Class<?> clazz, Annotation annotation,

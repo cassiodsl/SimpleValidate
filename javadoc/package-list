@@ -1,3 +1,6 @@
+br.com.cdsl.annotations.exception
 br.com.cdsl.annotations.field
 br.com.cdsl.annotations.type
 br.com.cdsl.annotations.value
+br.com.cdsl.validator.object
+br.com.cdsl.validator.validate

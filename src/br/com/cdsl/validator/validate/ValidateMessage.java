@@ -1,5 +1,9 @@
 package br.com.cdsl.validator.validate;
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 class ValidateMessage implements Message {
 
 	private boolean validate;

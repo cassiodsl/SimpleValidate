@@ -8,7 +8,11 @@ import java.util.List;
 
 import br.com.cdsl.annotations.exception.NonException;
 import br.com.cdsl.annotations.field.NonSpecialChar;
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 class NonSpecialCharValidator extends AbstractValidator {
 
 	public NonSpecialCharValidator(Class<?> clazz, Annotation annotation,

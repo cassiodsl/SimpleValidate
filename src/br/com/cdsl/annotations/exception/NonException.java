@@ -1,5 +1,10 @@
 package br.com.cdsl.annotations.exception;
 
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 public class NonException extends Exception {
 
 	/**

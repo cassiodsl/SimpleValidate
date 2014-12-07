@@ -3,7 +3,11 @@ package br.com.cdsl.validator.validate;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.List;
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 class TriggerValidator extends AbstractValidator {
 
 	public TriggerValidator(Class<?> clazz, Annotation annotation, Field field,

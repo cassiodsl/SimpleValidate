@@ -9,7 +9,11 @@ import java.util.List;
 
 import br.com.cdsl.annotations.exception.NonException;
 import br.com.cdsl.annotations.field.Size;
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 class SizeValidator extends AbstractValidator {
 
 	public SizeValidator(Class<?> clazz, Annotation annotation, Field field,

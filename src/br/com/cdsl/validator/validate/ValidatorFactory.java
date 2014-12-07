@@ -16,7 +16,11 @@ import br.com.cdsl.annotations.value.Decimal;
 import br.com.cdsl.annotations.value.Email;
 import br.com.cdsl.annotations.value.InscricaoEstadual;
 import br.com.cdsl.annotations.value.Int;
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 class ValidatorFactory {
 	
 	

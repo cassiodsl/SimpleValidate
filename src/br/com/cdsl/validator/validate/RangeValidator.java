@@ -8,7 +8,11 @@ import java.util.List;
 
 import br.com.cdsl.annotations.exception.NonException;
 import br.com.cdsl.annotations.field.Range;
-
+/**
+ * 
+ * @author Cassio Lemos
+ *
+ */
 class RangeValidator extends AbstractValidator {
 
 	public RangeValidator(Class<?> clazz, Annotation annotation, Field field,
