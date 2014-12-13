@@ -14,7 +14,7 @@ public class Validator {
 	/**
 	 * 
 	 * @param obj Objeto a ser validado
-	 * @return
+	 * @return List {@link Message}
 	 * @throws Exception
 	 */
 	public static List<Message> validate(Object obj) throws Exception {
