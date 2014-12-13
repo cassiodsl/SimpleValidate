@@ -9,7 +9,11 @@ import org.junit.Test;
 import br.com.cdsl.validator.validate.Message;
 import br.com.cdsl.validator.validate.Validator;
 
-class SizeValidatorTest {
+public class SizeValidatorTest {
+	
+	public SizeValidatorTest() {
+		super();
+	}
 
 	@Test
 	public void tamanhoMaxEMinStringOK() {
@@ -17,7 +21,7 @@ class SizeValidatorTest {
 
 		List<Message> listaErros = null;
 		try {
-			listaErros = Validator.validar(r);
+			listaErros = Validator.validate(r);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,6 +32,8 @@ class SizeValidatorTest {
 
 		Assert.assertEquals(listaErros.isEmpty(), true);
 	}
+
+
 
 	private Endereco buildEnderecoOk() {
 		Endereco r = new Endereco();
@@ -69,7 +75,7 @@ class SizeValidatorTest {
 
 		List<Message> listaErros = null;
 		try {
-			listaErros = Validator.validar(r);
+			listaErros = Validator.validate(r);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

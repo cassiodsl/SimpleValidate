@@ -8,8 +8,12 @@ import org.junit.Test;
 import br.com.cdsl.validator.validate.Message;
 import br.com.cdsl.validator.validate.Validator;
 
-class NonSpecialCharValidatorTest {
+public class NonSpecialCharValidatorTest {
 	
+	public NonSpecialCharValidatorTest() {
+		super();
+	}
+
 	@Test
 	public void naoAceitarCharEspecial(){
 		
@@ -17,7 +21,7 @@ class NonSpecialCharValidatorTest {
 		p.setNome("Cássio");
 		List<Message> validar = null;
 		try {
-			validar = Validator.validar(p);
+			validar = Validator.validate(p);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

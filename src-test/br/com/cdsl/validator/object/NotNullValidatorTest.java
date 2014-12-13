@@ -9,7 +9,11 @@ import org.junit.Test;
 import br.com.cdsl.validator.validate.Message;
 import br.com.cdsl.validator.validate.Validator;
 
-class NotNullValidatorTest{
+public class NotNullValidatorTest{
+
+	public NotNullValidatorTest() {
+		super();
+	}
 
 	@Test
 	public void notNullDeveAcionarException(){
@@ -20,7 +24,7 @@ class NotNullValidatorTest{
 		boolean excecaoCorreta = false;
 		String mensagemRetorno = "";
 		try {
-			Validator.validar(p);
+			Validator.validate(p);
 		}catch (Exception x){
 			excecaoCorreta = true;
 			mensagemRetorno = x.getMessage();
@@ -38,7 +42,7 @@ class NotNullValidatorTest{
 
 		boolean excecaoCorreta = false;
 		try {
-			Validator.validar(p);
+			Validator.validate(p);
 		}catch (CampoVazioException x){
 			excecaoCorreta = true;
 			x.printStackTrace();
@@ -60,7 +64,7 @@ class NotNullValidatorTest{
 		boolean excecaoCorreta = false;
 		List<Message> validar = null;
 		try {
-			validar = Validator.validar(p);
+			validar = Validator.validate(p);
 		}catch (CampoVazioException x){
 			excecaoCorreta = true;
 			x.printStackTrace();
@@ -89,7 +93,7 @@ class NotNullValidatorTest{
 		boolean excecaoCorreta = false;
 		List<Message> validar = null;
 		try {
-			validar = Validator.validar(p);
+			validar = Validator.validate(p);
 		}catch (CampoVazioException x){
 			excecaoCorreta = true;
 			x.printStackTrace();

@@ -8,7 +8,13 @@ import org.junit.Test;
 import br.com.cdsl.validator.validate.Message;
 import br.com.cdsl.validator.validate.Validator;
 
-class RangeValidatorTest {
+public class RangeValidatorTest {
+	
+	
+
+	public RangeValidatorTest() {
+		super();
+	}
 
 	@Test
 	public void testarRangeNumerico(){
@@ -23,7 +29,7 @@ class RangeValidatorTest {
 		
 		List<Message> validar = null;
 		try {
-			validar = Validator.validar(valor);
+			validar = Validator.validate(valor);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

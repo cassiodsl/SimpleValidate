@@ -7,15 +7,19 @@ import org.junit.Test;
 import br.com.cdsl.validator.validate.Message;
 import br.com.cdsl.validator.validate.Validator;
 
-class NotEmptyValidatorTest {
+public class NotEmptyValidatorTest {
 	
+	public NotEmptyValidatorTest() {
+		super();
+	}
+
 	@Test
 	public void validarCampoVazio(){
 		PessoaComException p = new PessoaComException();
 		p.setNome("");
 		List<Message> validar = null;
 		try {
-			validar = Validator.validar(p);
+			validar = Validator.validate(p);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

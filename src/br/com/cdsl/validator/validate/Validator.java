@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Validator {
 
-	public static List<Message> validar(Object obj) throws Exception {
+	public static List<Message> validate(Object obj) throws Exception {
 
 		List<Message> erros = new ArrayList<Message>();
 		Class<?> clazz = obj.getClass();
