@@ -11,6 +11,12 @@ import java.util.List;
  */
 public class Validator {
 
+	/**
+	 * 
+	 * @param obj Objeto a ser validado
+	 * @return
+	 * @throws Exception
+	 */
 	public static List<Message> validate(Object obj) throws Exception {
 
 		List<Message> erros = new ArrayList<Message>();
