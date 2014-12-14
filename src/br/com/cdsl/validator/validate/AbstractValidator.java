@@ -3,6 +3,7 @@ package br.com.cdsl.validator.validate;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,6 +21,7 @@ abstract class AbstractValidator implements BeanAnalyser {
 	protected Annotation annotation;
 	protected Field field;
 	protected Class<?> clazz;
+	private BeanAnalyser beanAnalyser;
 	
 	
 	public AbstractValidator(Class<?> clazz, Annotation annotation, Field field, Object object, Class<? extends Exception> exception, String messageException) {
@@ -32,13 +34,18 @@ abstract class AbstractValidator implements BeanAnalyser {
 
 	}
 	
+	public void setBeanAnalyser(BeanAnalyser beanAnalyser) {
+		this.beanAnalyser = beanAnalyser;
+	}
+
+
 	/**
 	 * Lança a Exception indicada e adiciona o erro na lista de mensagens
 	 * @param messages
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Message> whenValueIsNotValid(List<Message> messages) throws Exception{
+	protected List<Message> whenValueIsNotValid(List<Message> messages) throws Exception{
 		field.setAccessible(true);
 		String strField = field.getName();
 		StringBuilder strMessage = new StringBuilder();
@@ -100,5 +107,16 @@ abstract class AbstractValidator implements BeanAnalyser {
 		return messages;
 	}
 
-	public abstract List<Message> validate() throws Exception;
+	public List<Message> validate() throws Exception{
+		List<Message> messages = new ArrayList<Message>();
+		if(beanAnalyser!=null){
+			messages = beanAnalyser.validate();
+		}
+		List<Message> thisMessages = startValidate();
+		messages.addAll(thisMessages);
+		return messages;
+	}
+	
+	protected abstract List<Message> startValidate() throws Exception;
+	
 }

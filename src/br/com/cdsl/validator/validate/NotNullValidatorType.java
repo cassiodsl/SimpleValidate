@@ -19,14 +19,16 @@ class NotNullValidatorType extends AbstractValidator {
 	}
 
 	@Override
-	public List<Message> validate() throws Exception {
+	public List<Message> startValidate() throws Exception {
 		List<Message> messages = new ArrayList<Message>();
-
+		
 		field.setAccessible(true);
 		try {
 			if (object == null) {
 				whenValueIsNotValid(messages);
 			}
+			
+			
 		} catch (Exception e) {
 			throw e;
 		} 

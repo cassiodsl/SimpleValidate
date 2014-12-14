@@ -21,7 +21,7 @@ class SizeValidator extends AbstractValidator {
 	}
 
 	@Override
-	public List<Message> validate() throws Exception {
+	public List<Message> startValidate() throws Exception {
 		List<Message> mensagens = new ArrayList<Message>();
 
 		field.setAccessible(true);

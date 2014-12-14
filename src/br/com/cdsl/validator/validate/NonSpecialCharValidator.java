@@ -20,7 +20,7 @@ class NonSpecialCharValidator extends AbstractValidator {
 	}
 
 	@Override
-	public List<Message> validate() throws Exception {
+	public List<Message> startValidate() throws Exception {
 		String rules = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789 ";
 
 		List<Message> mensagens = new ArrayList<Message>();

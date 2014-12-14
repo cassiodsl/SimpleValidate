@@ -17,4 +17,9 @@ public @interface NotNull{
 	
 	Class<? extends Exception> exception() default NonException.class;
 	String messageException() default "";
+	/**
+	 * Quando um valor for considerado vazio é possível selecionar se será considerado nulo, será como adicionar {@link NotEmpty} ao objeto.
+	 * @return
+	 */
+	boolean emptyIsNull() default false;
 }

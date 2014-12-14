@@ -18,7 +18,7 @@ class CPFValidator extends AbstractValidator {
 	}
 
 	@Override
-	public List<Message> validate() throws Exception {
+	public List<Message> startValidate() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
