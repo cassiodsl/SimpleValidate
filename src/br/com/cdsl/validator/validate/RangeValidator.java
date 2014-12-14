@@ -8,6 +8,7 @@ import java.util.List;
 
 import br.com.cdsl.annotations.exception.NonException;
 import br.com.cdsl.annotations.field.Range;
+
 /**
  * 
  * @author Cassio Lemos
@@ -38,7 +39,8 @@ class RangeValidator extends AbstractValidator {
 			if ((max.contains("/") || max.contains("-"))
 					|| (min.contains("/") || min.contains("-"))) {
 				// tipo data
-				throw new UnsupportedOperationException("Versao alpha, não aceita tipo Data");
+				throw new UnsupportedOperationException(
+						"Versao alpha, não aceita tipo Data");
 
 			} else if (max.contains(".") || min.contains(".")) {
 				// tipo decimal
@@ -47,16 +49,7 @@ class RangeValidator extends AbstractValidator {
 				Number number = (Number) object;
 				if (number.doubleValue() > intMax
 						|| number.doubleValue() < intMin) {
-					if (!exception.getName().equals(
-							NonException.class.getName())) {
-						Constructor<? extends Exception> constructor = exception
-								.getConstructor(String.class);
-
-						Exception e = constructor.newInstance(mensagem);
-						throw e;
-					}
-					ValidateMessage vm = new ValidateMessage(false, mensagem);
-					mensagens.add(vm);
+					whenValueIsNotValid(mensagens);
 				}
 			} else {
 				int intMax = Integer.parseInt(max);

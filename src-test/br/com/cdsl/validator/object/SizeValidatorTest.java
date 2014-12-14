@@ -26,11 +26,12 @@ public class SizeValidatorTest {
 			e.printStackTrace();
 		}
 
-		for (Message message : listaErros) {
-			System.out.println(message.getMessage());
+		if (listaErros!=null) {
+			for (Message message : listaErros) {
+				System.out.println(message.getMessage());
+			}
 		}
-
-		Assert.assertEquals(listaErros.isEmpty(), true);
+		Assert.assertEquals(listaErros!=null && listaErros.isEmpty(), true);
 	}
 
 
@@ -80,10 +81,11 @@ public class SizeValidatorTest {
 			e.printStackTrace();
 		}
 
-		for (Message message : listaErros) {
-			System.out.println(message.getMessage());
+		if (listaErros!=null) {
+			for (Message message : listaErros) {
+				System.out.println(message.getMessage());
+			}
 		}
-
 		Assert.assertEquals(listaErros != null && listaErros.size() == 3, true);
 	}
 

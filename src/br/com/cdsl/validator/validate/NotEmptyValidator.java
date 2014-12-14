@@ -1,13 +1,11 @@
 package br.com.cdsl.validator.validate;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import br.com.cdsl.annotations.exception.NonException;
 /**
  * 
  * @author Cassio Lemos
@@ -26,8 +24,6 @@ class NotEmptyValidator extends AbstractValidator {
 		List<Message> mensagens = new ArrayList<Message>();
 
 		field.setAccessible(true);
-		String strField = field.getName();
-		String mensagem = clazz.getName() + "." + strField + ": " + messageException;
 
 		try {
 			boolean notValid = false;
@@ -49,15 +45,7 @@ class NotEmptyValidator extends AbstractValidator {
 			}
 
 			if (notValid) {
-				if (!exception.getName().equals(NonException.class.getName())) {
-					Constructor<? extends Exception> constructor = exception
-							.getConstructor(String.class);
-
-					Exception e = constructor.newInstance(mensagem);
-					throw e;
-				}
-				ValidateMessage vm = new ValidateMessage(false, mensagem);
-				mensagens.add(vm);
+				whenValueIsNotValid(mensagens);
 			}
 
 		} catch (IllegalArgumentException e) {
