@@ -108,10 +108,11 @@ public class NotNullValidatorTest{
 		
 		assertEquals(!excecaoCorreta && (validar!=null&&validar.isEmpty()), true);
 	}
-	
+	/*
+	@Test
 	public void testNotNullWithNotEmptyImplicitNotOk(){
 		
-		PessoaTest pessoa = new PessoaTest();
+		PessoaTest pessoa = new PessoaTest(null, null, null, null);
 		StringBuilder strBuilder = new StringBuilder();
 		try {
 			List<Message> validate = Validator.validate(pessoa);
@@ -124,14 +125,14 @@ public class NotNullValidatorTest{
 		}
 		
 		String str = strBuilder.toString();
-		boolean containsValid1 = !str.contains("Validação_1");//erro
-		boolean containsValid2 = !str.contains("Validação_2");//erro
+		boolean containsValid1 = str.contains("Validação_1");//erro
+		boolean containsValid2 = str.contains("Validação_2");//erro
 		boolean containsValid3 = str.contains("Validação_3");//ok
 		boolean containsValid4 = str.contains("Validação_4");//ok
 		
 		Assert.assertEquals(containsValid1 && containsValid2 && containsValid3 && containsValid4, true);
 		
-	}
+	}*/
 	
 	
 	

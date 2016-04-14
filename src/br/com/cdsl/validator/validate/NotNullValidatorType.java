@@ -5,6 +5,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.cdsl.annotations.field.NotNull;
+
 /**
  * 
  * @author Cassio Lemos
@@ -26,6 +28,12 @@ class NotNullValidatorType extends AbstractValidator {
 		try {
 			if (object == null) {
 				whenValueIsNotValid(messages);
+			}
+			NotNull annotationField = (NotNull) annotation;
+			boolean emptyIsNull = annotationField.emptyIsNull();
+			if(emptyIsNull){
+				//TODO: encadear resposabilidades
+				new NotEmptyValidator(clazz, annotationField, field, object, exception, messageException).validate();
 			}
 			
 			
