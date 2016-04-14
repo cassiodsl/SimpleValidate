@@ -37,7 +37,7 @@ class ValidatorFactory {
 			messageException = simpleAnnotation.messageException();
 			NotNullValidatorType notNullValidatorType = new NotNullValidatorType(clazz, annotation, field, o, exception, messageException);
 			if(simpleAnnotation.emptyIsNull()){
-				notNullValidatorType.setBeanAnalyser( new NotEmptyValidator(clazz, annotation, field, simpleAnnotation, exception, messageException));
+				notNullValidatorType.setBeanAnalyser( new NotEmptyValidator(clazz, annotation, field, o, exception, messageException));
 			}
 			return notNullValidatorType;
 		} 
