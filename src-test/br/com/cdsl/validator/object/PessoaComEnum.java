@@ -8,6 +8,7 @@ class PessoaComEnum {
 	@NotNull(exception=CampoVazioException.class, emptyIsNull=true)
 	private String nome;
 	
+	@NotNull(exception=CampoVazioException.class, emptyIsNull=true)
 	private TipoPessoa tipoPessoa;
 
 	public PessoaComEnum(String nome, TipoPessoa tipoPessoa) {

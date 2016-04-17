@@ -9,7 +9,7 @@ public class EnumTest {
 	@Test
 	public void testarAtributoComEnum(){
 		
-		PessoaComEnum pessoa = new PessoaComEnum("", TipoPessoa.JURIDICA);
+		PessoaComEnum pessoa = new PessoaComEnum("Teste", TipoPessoa.JURIDICA);
 		try {
 			Validator.validate(pessoa);
 		} catch (Exception e) {

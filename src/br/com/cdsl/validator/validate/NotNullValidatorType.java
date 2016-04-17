@@ -29,13 +29,6 @@ class NotNullValidatorType extends AbstractValidator {
 			if (object == null) {
 				whenValueIsNotValid(messages);
 			}
-//			NotNull annotationField = (NotNull) annotation;
-//			boolean emptyIsNull = annotationField.emptyIsNull();
-//			if(emptyIsNull){
-//				//TODO: encadear resposabilidades
-//				new NotEmptyValidator(clazz, annotationField, field, object, exception, messageException).validate();
-//			}
-//			
 			
 		} catch (Exception e) {
 			throw e;
