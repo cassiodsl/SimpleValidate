@@ -49,6 +49,9 @@ public class Validator {
 	private static void fieldAnalyse(Object obj, List<Message> erros,
 			Class<?> clazz) throws Exception {
 		for (Field f : clazz.getDeclaredFields()) {
+			if(f.getType().isEnum()){
+				return;
+			}
 			f.setAccessible(true);
 			Annotation[] fieldAnnotation = f.getAnnotations();
 			List<Annotation> listAnnotations = new ArrayList<Annotation>();
