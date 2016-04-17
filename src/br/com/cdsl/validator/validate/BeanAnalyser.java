@@ -8,5 +8,5 @@ import java.util.List;
  */
 interface BeanAnalyser {
 
-	public List<Message> validate() throws Exception;
+	public List<Message> validate(boolean throwsException) throws Exception;
 }

@@ -20,12 +20,13 @@ abstract class AbstractValidator implements BeanAnalyser {
 	protected String messageException;
 	protected Annotation annotation;
 	protected Field field;
-	protected Class<?> clazz;
+	protected Class<?> type;
 	private BeanAnalyser beanAnalyser;
+	private boolean throwsException;
 	
 	
-	public AbstractValidator(Class<?> clazz, Annotation annotation, Field field, Object object, Class<? extends Exception> exception, String messageException) {
-		this.clazz = clazz;
+	public AbstractValidator(Class<?> type, Annotation annotation, Field field, Object object, Class<? extends Exception> exception, String messageException) {
+		this.type = type;
 		this.annotation = annotation;
 		this.field = field;
 		this.object = object;
@@ -49,7 +50,7 @@ abstract class AbstractValidator implements BeanAnalyser {
 		field.setAccessible(true);
 		String strField = field.getName();
 		StringBuilder strMessage = new StringBuilder();
-		strMessage.append(clazz.getName());
+		strMessage.append(type.getName());
 		strMessage.append(".");
 		strMessage.append(strField);
 		strMessage.append(": ");
@@ -95,7 +96,7 @@ abstract class AbstractValidator implements BeanAnalyser {
 				strMessage.append(object);
 			}
 		}
-		if (!exception.getName().equals(NonException.class.getName())) {
+		if (!exception.getName().equals(NonException.class.getName()) && throwsException) {
 			Constructor<? extends Exception> constructor = exception
 					.getConstructor(String.class);
 			constructor.setAccessible(true);
@@ -107,10 +108,11 @@ abstract class AbstractValidator implements BeanAnalyser {
 		return messages;
 	}
 
-	public List<Message> validate() throws Exception{
+	public List<Message> validate(boolean throwsException) throws Exception{
 		List<Message> messages = new ArrayList<Message>();
+		this.throwsException = throwsException;
 		if(beanAnalyser!=null){
-			messages = beanAnalyser.validate();
+			messages = beanAnalyser.validate(throwsException);
 		}
 		List<Message> thisMessages = startValidate();
 		messages.addAll(thisMessages);

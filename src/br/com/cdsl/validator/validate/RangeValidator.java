@@ -3,6 +3,7 @@ package br.com.cdsl.validator.validate;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,12 +31,17 @@ class RangeValidator extends AbstractValidator {
 		String min = annotationField.min();
 
 		field.setAccessible(true);
-		String strClasse = clazz.getName();
+		String strClasse = type.getName();
 		String strField = field.getName();
 		String mensagem = strClasse + "." + strField + ": " + messageException;
 		try {
 			// Object local = f.get(o);
-			// TODO; implementar comparator
+			// TODO: implementar comparator
+			Number number = (Number) object;
+			//TODO: Ao habilitar a função data, validar tipo do objeto "object"
+			if(number==null){
+				executarErro(mensagens, mensagem);
+			}
 			if ((max.contains("/") || max.contains("-"))
 					|| (min.contains("/") || min.contains("-"))) {
 				// tipo data
@@ -46,27 +52,35 @@ class RangeValidator extends AbstractValidator {
 				// tipo decimal
 				double intMax = Double.parseDouble(max);
 				double intMin = Double.parseDouble(min);
-				Number number = (Number) object;
 				if (number.doubleValue() > intMax
 						|| number.doubleValue() < intMin) {
 					whenValueIsNotValid(mensagens);
 				}
 			} else {
-				int intMax = Integer.parseInt(max);
-				int intMin = Integer.parseInt(min);
-				Number number = (Number) object;
-				if (number.intValue() > intMax || number.intValue() < intMin) {
-					if (!exception.getName().equals(
-							NonException.class.getName())) {
-						Constructor<? extends Exception> constructor = exception
-								.getConstructor(String.class);
-
-						Exception e = constructor.newInstance(mensagem);
-						throw e;
+				if("".equals(max) && !"".equals(min)){
+					//só minímo
+					int intMin = Integer.parseInt(min);
+					if (number.intValue() < intMin) {
+						executarErro(mensagens, mensagem);
+					}	
+				}else if (!"".equals(max) && "".equals(min)){
+					//só máximo
+					int intMax = Integer.parseInt(max);
+					if (number.intValue() > intMax) {
+						executarErro(mensagens, mensagem);
 					}
-					ValidateMessage vm = new ValidateMessage(false, mensagem);
-					mensagens.add(vm);
+				}else if (!"".equals(max) && !"".equals(min)){
+					//minímo e máximo
+					int intMin = Integer.parseInt(min);
+					int intMax = Integer.parseInt(max);
+					if (number.intValue() > intMax || number.intValue() < intMin) {
+						executarErro(mensagens, mensagem);
+					}
+				}else{
+					//não há como validar, retornar erro de validação para usuário
+					executarErro(mensagens, mensagem);
 				}
+				
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
@@ -77,6 +91,21 @@ class RangeValidator extends AbstractValidator {
 		}
 
 		return mensagens;
+	}
+
+	private void executarErro(List<Message> mensagens, String mensagem)
+			throws NoSuchMethodException, InstantiationException,
+			IllegalAccessException, InvocationTargetException, Exception {
+		if (!exception.getName().equals(
+				NonException.class.getName())) {
+			Constructor<? extends Exception> constructor = exception
+					.getConstructor(String.class);
+
+			Exception e = constructor.newInstance(mensagem);
+			throw e;
+		}
+		ValidateMessage vm = new ValidateMessage(false, mensagem);
+		mensagens.add(vm);
 	}
 
 }

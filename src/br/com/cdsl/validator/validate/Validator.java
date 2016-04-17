@@ -10,6 +10,8 @@ import java.util.List;
  *
  */
 public class Validator {
+	
+	private static boolean throwsException;
 
 	/**
 	 * 
@@ -20,24 +22,41 @@ public class Validator {
 	public static List<Message> validate(Object obj) throws Exception {
 
 		List<Message> erros = new ArrayList<Message>();
-		Class<?> clazz = obj.getClass();
+		Class<?> type = obj.getClass();
 
 		// Analisar atributos
-		fieldAnalyse(obj, erros, clazz);
+		fieldAnalyse(obj, erros, type, throwsException);
+
+		return erros;
+	}
+	
+	/**
+	 * 
+	 * @param obj Objeto a ser validado
+	 * @param lancar Exceção
+	 * @return List {@link Message}
+	 * @throws Exception
+	 */
+	public static List<Message> validate(Object obj, boolean throwsException) throws Exception {
+		List<Message> erros = new ArrayList<Message>();
+		Class<?> type = obj.getClass();
+
+		// Analisar atributos
+		fieldAnalyse(obj, erros, type, throwsException);
 
 		return erros;
 	}
 
 	private static void annotationsAnalyseField(Field field, Object obj,
-			List<Message> erros, List<Annotation> listAnnotations, Class<?> clazz)
+			List<Message> erros, List<Annotation> listAnnotations, Class<?> type, boolean throwsException)
 			throws Exception {
 		for (Annotation annotation : listAnnotations) {
 			if(!annotation.annotationType().getName().startsWith("br.com.cdsl.")){
 				continue;
 			}
-			BeanAnalyser validator = ValidatorFactory.getValidator(clazz, field, obj,
+			BeanAnalyser validator = ValidatorFactory.getValidator(type, field, obj,
 					annotation);
-			List<Message> mensagensErro = validator.validate();
+			List<Message> mensagensErro = validator.validate(throwsException);
 			if (mensagensErro != null) {
 				for (Message message : mensagensErro) {
 					erros.add(message);
@@ -47,8 +66,8 @@ public class Validator {
 	}
 
 	private static void fieldAnalyse(Object obj, List<Message> erros,
-			Class<?> clazz) throws Exception {
-		for (Field f : clazz.getDeclaredFields()) {
+			Class<?> type, boolean throwsException) throws Exception {
+		for (Field f : type.getDeclaredFields()) {
 			f.setAccessible(true);
 			Annotation[] fieldAnnotation = f.getAnnotations();
 			List<Annotation> listAnnotations = new ArrayList<Annotation>();
@@ -58,14 +77,14 @@ public class Validator {
 			for (Annotation annotation : obj.getClass().getAnnotations()) {
 				listAnnotations.add(annotation);
 			}
-			annotationsAnalyseField(f, f.get(obj), erros, listAnnotations, clazz);
+			annotationsAnalyseField(f, f.get(obj), erros, listAnnotations, type, throwsException);
 			//Não entrar no Enum
 			if(f.getType().isEnum()){
-				return;
+				continue;
 			}
 
 			if (!f.getType().getName().startsWith("java") && f.get(obj) != null) {
-				fieldAnalyse(f.get(obj), erros, f.getType());
+				fieldAnalyse(f.get(obj), erros, f.getType(), throwsException);
 			}
 		}
 	}
