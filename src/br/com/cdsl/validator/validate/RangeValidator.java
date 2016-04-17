@@ -40,7 +40,8 @@ class RangeValidator extends AbstractValidator {
 			Number number = (Number) object;
 			//TODO: Ao habilitar a função data, validar tipo do objeto "object"
 			if(number==null){
-				executarErro(mensagens, mensagem);
+				whenValueIsNotValid(mensagens);
+				return mensagens;
 			}
 			if ((max.contains("/") || max.contains("-"))
 					|| (min.contains("/") || min.contains("-"))) {
@@ -61,24 +62,24 @@ class RangeValidator extends AbstractValidator {
 					//só minímo
 					int intMin = Integer.parseInt(min);
 					if (number.intValue() < intMin) {
-						executarErro(mensagens, mensagem);
+						whenValueIsNotValid(mensagens);
 					}	
 				}else if (!"".equals(max) && "".equals(min)){
 					//só máximo
 					int intMax = Integer.parseInt(max);
 					if (number.intValue() > intMax) {
-						executarErro(mensagens, mensagem);
+						whenValueIsNotValid(mensagens);
 					}
 				}else if (!"".equals(max) && !"".equals(min)){
 					//minímo e máximo
 					int intMin = Integer.parseInt(min);
 					int intMax = Integer.parseInt(max);
 					if (number.intValue() > intMax || number.intValue() < intMin) {
-						executarErro(mensagens, mensagem);
+						whenValueIsNotValid(mensagens);
 					}
 				}else{
 					//não há como validar, retornar erro de validação para usuário
-					executarErro(mensagens, mensagem);
+					whenValueIsNotValid(mensagens);
 				}
 				
 			}
@@ -91,21 +92,6 @@ class RangeValidator extends AbstractValidator {
 		}
 
 		return mensagens;
-	}
-
-	private void executarErro(List<Message> mensagens, String mensagem)
-			throws NoSuchMethodException, InstantiationException,
-			IllegalAccessException, InvocationTargetException, Exception {
-		if (!exception.getName().equals(
-				NonException.class.getName())) {
-			Constructor<? extends Exception> constructor = exception
-					.getConstructor(String.class);
-
-			Exception e = constructor.newInstance(mensagem);
-			throw e;
-		}
-		ValidateMessage vm = new ValidateMessage(false, mensagem);
-		mensagens.add(vm);
 	}
 
 }

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.cdsl.simplevalidate</groupId>
 	<artifactId>SimpleValidate</artifactId>
-	<version>0.0.7</version>
+	<version>0.0.8</version>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>src-test</testSourceDirectory>
