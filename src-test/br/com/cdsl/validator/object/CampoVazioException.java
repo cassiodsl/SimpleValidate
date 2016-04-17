@@ -1,6 +1,6 @@
 package br.com.cdsl.validator.object;
 
-public class CampoVazioException extends Exception {
+class CampoVazioException extends Exception {
 
 	/**
 	 * 

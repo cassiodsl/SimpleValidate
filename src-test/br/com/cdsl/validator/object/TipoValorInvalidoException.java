@@ -1,6 +1,6 @@
 package br.com.cdsl.validator.object;
 
-public class TipoValorInvalidoException extends Exception {
+class TipoValorInvalidoException extends Exception {
 
 	/**
 	 * 

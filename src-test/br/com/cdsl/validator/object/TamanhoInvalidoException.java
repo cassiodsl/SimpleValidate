@@ -1,6 +1,6 @@
 package br.com.cdsl.validator.object;
 
-public class TamanhoInvalidoException extends Exception {
+class TamanhoInvalidoException extends Exception {
 
 	/**
 	 * 

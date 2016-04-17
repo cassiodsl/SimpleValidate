@@ -98,7 +98,7 @@ abstract class AbstractValidator implements BeanAnalyser {
 		if (!exception.getName().equals(NonException.class.getName())) {
 			Constructor<? extends Exception> constructor = exception
 					.getConstructor(String.class);
-
+			constructor.setAccessible(true);
 			Exception e = constructor.newInstance(strMessage.toString());
 			throw e;
 		}
