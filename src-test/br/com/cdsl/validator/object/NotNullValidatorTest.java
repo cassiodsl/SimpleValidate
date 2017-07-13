@@ -25,7 +25,7 @@ public class NotNullValidatorTest{
 		boolean excecaoCorreta = false;
 		String mensagemRetorno = "";
 		try {
-			Validator.validate(p);
+			Validator.validate(p, true);
 		}catch (Exception x){
 			excecaoCorreta = true;
 			mensagemRetorno = x.getMessage();
