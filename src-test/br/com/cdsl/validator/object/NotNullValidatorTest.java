@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.cdsl.validator.validate.Message;
@@ -32,14 +31,14 @@ public class NotNullValidatorTest{
 			x.printStackTrace();
 		}
 		
-		assertEquals(excecaoCorreta && mensagemRetorno.equals("br.com.cdsl.validator.object.PessoaComException.nome: Campo obrigatorio não preenchido"), true);
+		assertEquals(excecaoCorreta && mensagemRetorno.equals("br.com.cdsl.validator.object.PessoaComException.nome: Campo obrigatorio nï¿½o preenchido"), true);
 	}
 	
 	@Test
 	public void notNullNaoDeveAcionarException(){
 		
 		PessoaComException p = new PessoaComException();
-		p.setNome("Cássio");
+		p.setNome("Cï¿½ssio");
 
 		boolean excecaoCorreta = false;
 		try {
@@ -124,10 +123,10 @@ public class NotNullValidatorTest{
 		}
 		
 		String str = strBuilder.toString();
-		boolean containsValid1 = str.contains("Validação_1");//erro
-		boolean containsValid2 = str.contains("Validação_2");//erro
-		boolean containsValid3 = !str.contains("Validação_3");//ok - não haverá mensagem
-		boolean containsValid4 = !str.contains("Validação_4");//ok - não haverá mensagem
+		boolean containsValid1 = str.contains("Validaï¿½ï¿½o_1");//erro
+		boolean containsValid2 = str.contains("Validaï¿½ï¿½o_2");//erro
+		boolean containsValid3 = !str.contains("Validaï¿½ï¿½o_3");//ok - nï¿½o haverï¿½ mensagem
+		boolean containsValid4 = !str.contains("Validaï¿½ï¿½o_4");//ok - nï¿½o haverï¿½ mensagem
 		
 		assertEquals(containsValid1 && containsValid2 && containsValid3 && containsValid4, true);
 		

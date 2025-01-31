@@ -1,13 +1,10 @@
 package br.com.cdsl.validator.validate;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.cdsl.annotations.exception.NonException;
 import br.com.cdsl.annotations.field.Range;
 
 /**
@@ -31,14 +28,14 @@ class RangeValidator extends AbstractValidator {
 		String min = annotationField.min();
 
 		field.setAccessible(true);
-		String strClasse = type.getName();
-		String strField = field.getName();
-		String mensagem = strClasse + "." + strField + ": " + messageException;
+//		String strClasse = type.getName();
+//		String strField = field.getName();
+//		String mensagem = strClasse + "." + strField + ": " + messageException;
 		try {
 			// Object local = f.get(o);
 			// TODO: implementar comparator
 			Number number = (Number) object;
-			//TODO: Ao habilitar a função data, validar tipo do objeto "object"
+			//TODO: Ao habilitar a funï¿½ï¿½o data, validar tipo do objeto "object"
 			if(number==null){
 				whenValueIsNotValid(mensagens);
 				return mensagens;
@@ -47,7 +44,7 @@ class RangeValidator extends AbstractValidator {
 					|| (min.contains("/") || min.contains("-"))) {
 				// tipo data
 				throw new UnsupportedOperationException(
-						"Versao alpha, não aceita tipo Data");
+						"Versao alpha, nï¿½o aceita tipo Data");
 
 			} else if (max.contains(".") || min.contains(".")) {
 				// tipo decimal
@@ -59,26 +56,26 @@ class RangeValidator extends AbstractValidator {
 				}
 			} else {
 				if("".equals(max) && !"".equals(min)){
-					//só minímo
+					//sï¿½ minï¿½mo
 					int intMin = Integer.parseInt(min);
 					if (number.intValue() < intMin) {
 						whenValueIsNotValid(mensagens);
 					}	
 				}else if (!"".equals(max) && "".equals(min)){
-					//só máximo
+					//sï¿½ mï¿½ximo
 					int intMax = Integer.parseInt(max);
 					if (number.intValue() > intMax) {
 						whenValueIsNotValid(mensagens);
 					}
 				}else if (!"".equals(max) && !"".equals(min)){
-					//minímo e máximo
+					//minï¿½mo e mï¿½ximo
 					int intMin = Integer.parseInt(min);
 					int intMax = Integer.parseInt(max);
 					if (number.intValue() > intMax || number.intValue() < intMin) {
 						whenValueIsNotValid(mensagens);
 					}
 				}else{
-					//não há como validar, retornar erro de validação para usuário
+					//nï¿½o hï¿½ como validar, retornar erro de validaï¿½ï¿½o para usuï¿½rio
 					whenValueIsNotValid(mensagens);
 				}
 				
